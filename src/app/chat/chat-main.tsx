@@ -29,11 +29,19 @@ export const CHAIN_CONFIG = {
   }
 }
 const fetchMessages = async ({ pageParam }: { pageParam: number }) => {
-  const response = await axios.get(`${API_URL}/message?page=${pageParam}`);
+  const response = await axios.get(`${API_URL}/message?page=${pageParam}`, {
+    headers: {
+      "ngrok-skip-browser-warning": "69420"
+    }
+  });
   return { messages: response.data, nextCursor: response.data.length ? response.data.length === 50 ? pageParam + 1 : undefined : undefined };
 };
 const sendMessageToServer = async (message: Message) => {
-  const response = await axios.post(`${API_URL}/message`, message);
+  const response = await axios.post(`${API_URL}/message`, message, {
+    headers: {
+      "ngrok-skip-browser-warning": "69420"
+    }
+  });
   return response.data;
 };
 
