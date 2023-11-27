@@ -144,7 +144,7 @@ export default function Home() {
                 OpenChat is packed with features that make up a true decentralized chat experience
               </p>
           </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full pb-8">
         <FeatureCard title='Secure' text='User messages are sent over TLS and encrypted by default, each message is cryptographically signed' icon='lucide:lock'/>
         <FeatureCard title='Fast' text='We use Ably, the industry leader in pub/sub technology to deliver messages at lightspeed' icon='lucide:rocket'/>
         <FeatureCard title='Decentralized' text='Messages are signed and persisted on the blockchain thus making them impossible to censor' icon='lucide:network'/>
