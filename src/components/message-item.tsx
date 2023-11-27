@@ -47,8 +47,8 @@ export const MessageItem = ({message, forceSender, noAvatar}: MessageComponentPr
       <div className={`w-3/4 ${sender ? 'flex justify-end' : ''}`}>
         <div className={`relative inline-block`}>
           <Card className={`shadow-none ${sender ? message.isLoading ? 'bg-secondary border-dashed border-gray-500' : 'bg-accent' : 'bg-card'}`}>
-            <CardContent className={`p-2 ${message.isLoading ? 'text-gray-500' : ''}`}>
-              <p className='break-all'>{formattedContent}</p>
+            <CardContent className={`p-2 ${message.isLoading ? 'text-gray-500' : ''}`} style={{ wordBreak: 'break-word', overflowWrap: 'break-word', whiteSpace: 'pre-wrap', maxWidth: '100%' }}>
+              <p >{formattedContent}</p>
             </CardContent>
             <CardFooter className='p-2 text-xs text-gray-500 text-right flex justify-between'>
               <p>{new Date(message.time_data.iat).toLocaleString()}</p>
