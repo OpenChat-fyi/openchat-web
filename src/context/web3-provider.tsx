@@ -35,7 +35,6 @@
 // }
 
 "use client";
-
 import { createWeb3Modal } from '@web3modal/wagmi/react'
 import { walletConnectProvider, EIP6963Connector } from '@web3modal/wagmi'
 
@@ -69,7 +68,7 @@ const wagmiConfig = createConfig({
   autoConnect: true,
   connectors: [
     new WalletConnectConnector({ chains, options: { projectId, showQrModal: false, metadata } }),
-    new EIP6963Connector({ chains }),
+    // new EIP6963Connector({ chains }),
     new InjectedConnector({ chains, options: { shimDisconnect: true } }),
     new CoinbaseWalletConnector({ chains, options: { appName: metadata.name } })
   ],

@@ -1,16 +1,15 @@
-// app/chat/page.tsx
-"use client"
+"use client";
 import dynamic from 'next/dynamic'
 import { Input } from '@/shadcn-components/ui/input';
 import { useAccount, useNetwork, usePrepareContractWrite, useContractWrite } from 'wagmi';
 import React, { useState, useEffect, useRef } from 'react'
 import { useChannel } from 'ably/react'
 import axios from 'axios';
-import { MessageItem } from '@/components/message-item'
 import { useInfiniteQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Message } from '@/types/custom';
 import { EmojiPicker } from '@/components/emoji-picker';
 
+const MessageItem = dynamic(() => import('@/components/message-item'), { ssr: false });
 const MessageButton = dynamic(() => import('@/components/buttons').then((mod) => mod.MessageButton))
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL

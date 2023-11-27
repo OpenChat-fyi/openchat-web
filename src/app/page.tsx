@@ -1,6 +1,7 @@
 // app/page.tsx
 "use client";
-import { MessageItem } from '@/components/message-item';
+import dynamic from 'next/dynamic'
+const MessageItem = dynamic(() => import('@/components/message-item'), { ssr: false });
 import { Button } from '@/shadcn-components/ui/button';
 import { Card,
   CardContent,

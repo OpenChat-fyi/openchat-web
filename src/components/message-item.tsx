@@ -60,3 +60,5 @@ export const MessageItem = ({message, forceSender, noAvatar}: MessageComponentPr
     </div>
   )
 }
+
+export default MessageItem
