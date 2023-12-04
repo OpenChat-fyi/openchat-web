@@ -6,17 +6,42 @@ import { WagmiConfig, configureChains, createConfig } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'
 import { infuraProvider } from 'wagmi/providers/infura'
 
-import { optimismGoerli, sepolia, arbitrumGoerli } from 'viem/chains'
+import { optimismGoerli, sepolia, arbitrumGoerli, linea, scroll, base } from 'viem/chains'
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
+import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
 import { ReactNode } from 'react';
 
-const projectId = '51afd8a7bd88ae02dbbbfa6ee148a697'
+const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID!
+const infuraApiKey = process.env.NEXT_PUBLIC_INFURA_API_KEY!
+const scrollApiKey = process.env.NEXT_PUBLIC_BLOCKPI_SCROLL_API_KEY!
+const baseApiKey = process.env.NEXT_PUBLIC_BLOCKPI_BASE_API_KEY!
 
 const { chains, publicClient } = configureChains(
-  [optimismGoerli, arbitrumGoerli, sepolia],
-  [walletConnectProvider({ projectId }), publicProvider(), infuraProvider({ apiKey: 'b2b567b229984f4299f9ca3d211ebbdb' })]
+  [ 
+    // optimismGoerli, 
+    // arbitrumGoerli, 
+    // sepolia, 
+    base,
+    linea, 
+    scroll, 
+  ],
+  [ 
+    publicProvider(),
+    jsonRpcProvider({
+      rpc: (chain) => ({
+        http: `https://scroll.blockpi.network/v1/rpc/${scrollApiKey}`,
+      }),
+    }),
+    jsonRpcProvider({
+      rpc: (chain) => ({
+        http: `https://base.blockpi.network/v1/rpc/${baseApiKey}`,
+      }),
+    }),
+    infuraProvider({ apiKey: infuraApiKey }),
+    walletConnectProvider({ projectId }), 
+  ]
 )
 
 const metadata = {

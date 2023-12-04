@@ -12,20 +12,33 @@ import { EmojiPicker } from '@/components/emoji-picker';
 const MessageItem = dynamic(() => import('@/components/message-item'), { ssr: false });
 const MessageButton = dynamic(() => import('@/components/buttons').then((mod) => mod.MessageButton))
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL
-export type ChainList = "11155111" | "420" | "421613"
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+export type ChainList = "11155111" | "420" | "421613" | "59144" | "534352" | "8453"
 export const CHAIN_CONFIG = {
-  "11155111": {
+  "11155111": { // eth sepolia
       contract: '0x80fAb1fdE6C8216DE73112d207602930E118850b',
       explorer: 'https://sepolia.etherscan.io/tx/'
   },
-  "420": {
+  "420": { // optimism goerli
       contract: '0x5A0B048F1c5BCeFfccC04931F934634D3cF6C65b',
       explorer: 'https://goerli-optimism.etherscan.io/tx/'
   },
-  "421613": {
+  "421613": { // arbitrum goerli
       contract: '0xa8036D3BB3f4ff91C5c92a14CBE2348Bb79435da',
       explorer: 'https://goerli.arbiscan.io/tx/'
+  },
+  "59144": { // linea mainnet
+      contract: '0x4cBaF08033c65C9bE66A9cd4Ed26E96a028a5F8e',
+      explorer: 'https://lineascan.build/tx/'
+  },
+  "534352": { // scroll mainnet
+      contract: '0x52BAEF174b0a2758Bc78286464C624aCeb2cBa0c',
+      explorer: 'https://scrollscan.com/tx/'
+  },
+  "8453": {
+      contract: '0xEE028cbD99A675C1d19CCe4E5FD8d1Ef53701fe2',
+      explorer: 'https://basescan.org/tx/'
   }
 }
 const fetchMessages = async ({ pageParam }: { pageParam: number }) => {

@@ -12,7 +12,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Icon } from '@iconify/react';
 
-type ChainName = 'Optimism' | 'Arbitrum' | 'Ethereum';
+type ChainName = 'Scroll' | 'Linea' | 'Base';
 
 const MOCK_MESSAGES = {
   "message_1": {
@@ -89,13 +89,13 @@ const FeatureCard = ({title, text, icon}: FeatureCardProps) => {
 }
 
 export default function Home() {
-  const [chainScroll, setChainScroll] = useState<ChainName>('Optimism');
-  const chains: ChainName[] = ['Optimism', 'Arbitrum', 'Ethereum'];
+  const [chainScroll, setChainScroll] = useState<ChainName>('Scroll');
+  const chains: ChainName[] = ['Scroll', 'Linea', 'Base'];
 
   const chainColors: Record<ChainName, string> = {
-    'Optimism': 'bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-orange-500',
-    'Arbitrum': 'bg-clip-text text-transparent bg-gradient-to-r from-blue-800 to-blue-500',
-    'Ethereum': 'bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-300'
+    'Scroll': 'bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-orange-500',
+    'Linea': 'bg-clip-text text-transparent bg-gradient-to-r from-blue-800 to-blue-500',
+    'Base': 'bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-300'
   };
 
   useEffect(() => {
@@ -105,7 +105,7 @@ export default function Home() {
         const nextIndex = (currentIndex + 1) % chains.length;
         return chains[nextIndex];
       });
-    }, 3000); // Change the chain every 3 seconds
+    }, 1000); // Change the chain every 3 seconds
 
     return () => clearInterval(interval); // Clean up on component unmount
   }, []);
