@@ -31,7 +31,7 @@ export const blastSepolia = /*#__PURE__*/ defineChain({
 	},
 	rpcUrls: {
 		default: {
-			http: ["https://rpc.ankr.com/blast_testnet_sepolia/${blastApiKey}"],
+			http: [`https://rpc.ankr.com/blast_testnet_sepolia/${blastApiKey}`],
 		},
 		public: {
 			http: ["https://sepolia.blast.io"],
