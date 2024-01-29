@@ -31,10 +31,10 @@ export const blastSepolia = /*#__PURE__*/ defineChain({
 	},
 	rpcUrls: {
 		default: {
-			http: ["https://rpc.ankr.com/blast_testnet_sepolia/${blastApiKey}", "https://sepolia.blast.io"],
+			http: ["https://rpc.ankr.com/blast_testnet_sepolia/${blastApiKey}"],
 		},
 		public: {
-			http: ["https://rpc.ankr.com/blast_testnet_sepolia/${blastApiKey}", "https://sepolia.blast.io"],
+			http: ["https://sepolia.blast.io"],
 		},
 	},
 	blockExplorers: {
